@@ -52,8 +52,11 @@ class Sprite {
     this.currentAnimation = "idle-right"; //config.currentAnimation || "idle-down";
     this.currentAnimationFrame = 0;
 
+    /**
+     * TODO: Perchè la velocità di movimento cambia da computer a computer? Il codice ha preso vita propria
+     */
     //*For how long do we want to show a specific frame
-    this.animationFrameLimit = config.animationFrameLimit || 16;
+    this.animationFrameLimit = config.animationFrameLimit || 16; //*Speed up or slow down the animation process
     this.animationFrameProgress = this.animationFrameLimit;
 
     //*Reference the gameObject
@@ -92,8 +95,8 @@ class Sprite {
   }
 
   draw(ctx, cameraPerson) {
-    const x = this.gameObject.x - 8 + utils.withGrid(10.5) - cameraPerson.x;
-    const y = this.gameObject.y - 18 + utils.withGrid(5.75) - cameraPerson.y;
+    const x = this.gameObject.x - 15 + utils.withGrid(10.5) - cameraPerson.x; //10.5
+    const y = this.gameObject.y - 18 + utils.withGrid(5.75) - cameraPerson.y; //5.75
 
     this.isShadowLoaded && ctx.drawImage(this.shadow, x + 2, y + 10.5);
 

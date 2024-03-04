@@ -4,7 +4,7 @@ class DirectionInput {
 
     this.map = {
       ArrowUp: "up",
-      KeyW: "Up",
+      KeyW: "up",
       ArrowDown: "down",
       KeyS: "down",
       ArrowLeft: "left",

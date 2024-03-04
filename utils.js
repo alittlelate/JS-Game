@@ -3,7 +3,6 @@ const utils = {
     return n * 16;
   },
   asGridCoord(x, y) {
-    //return `${x * this.GRID_SIZE} ${y * this.GRID_SIZE}`;
     return `${x * 16},${y * 16}`;
   },
   nextPosition(initialX, initialY, direction) {

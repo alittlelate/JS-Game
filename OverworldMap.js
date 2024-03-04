@@ -13,8 +13,8 @@ class OverworldMap {
   drawLowerImage(ctx, cameraPerson) {
     ctx.drawImage(
       this.lowerImage,
-      utils.withGrid(10.5) - cameraPerson.x,
-      utils.withGrid(5.75) - cameraPerson.y
+      utils.withGrid(10.5) - cameraPerson.x, //10.5
+      utils.withGrid(5.75) - cameraPerson.y //5.75
     );
   }
 
@@ -28,8 +28,10 @@ class OverworldMap {
 
   isSpaceTaken(currentX, currentY, direction) {
     const { x, y } = utils.nextPosition(currentX, currentY, direction);
-    console.log("coords", `${x},${y}`);
-    console.log("walls", this.walls);
+    console.log(`Checking space at ${x},${y}`);
+    const isTaken = !!this.walls[`${x},${y}`];
+    console.log(`Is space taken? ${isTaken}`);
+
     return this.walls[`${x},${y}`] || false;
   }
 }
@@ -41,17 +43,19 @@ window.OverworldMaps = {
     gameObjects: {
       hero: new Person({
         isPlayerControlled: true,
-        x: utils.withGrid(17.5), //*6.5 and 8 to start at the first house
+        x: utils.withGrid(18), //*6 (6.5) and 8 to start at the first house
         y: utils.withGrid(8),
       }),
       master: new Person({
-        x: utils.withGrid(23.5),
-        y: utils.withGrid(18.8),
+        x: utils.withGrid(23),
+        y: utils.withGrid(18),
         src: "Images/characters/Master/SpriteSheet.png",
       }),
     },
     walls: {
-      [utils.asGridCoord(0, 3)]: true,
+      //*This is the wall in the attached image.
+      [utils.asGridCoord(16, 8)]: true,
+      /*       [utils.asGridCoord(0, 3)]: true,
       [utils.asGridCoord(1, 3)]: true,
       [utils.asGridCoord(2, 3)]: true,
       [utils.asGridCoord(3, 3)]: true,
@@ -119,7 +123,6 @@ window.OverworldMaps = {
       [utils.asGridCoord(14, 7)]: true,
       [utils.asGridCoord(14, 8)]: true,
       [utils.asGridCoord(15, 8)]: true,
-      [utils.asGridCoord(16, 8)]: true,
       [utils.asGridCoord(17, 8)]: true,
       [utils.asGridCoord(18, 8)]: true,
       [utils.asGridCoord(19, 8)]: true,
@@ -199,7 +202,7 @@ window.OverworldMaps = {
       [utils.asGridCoord(11, 15)]: true,
       [utils.asGridCoord(12, 15)]: true,
       [utils.asGridCoord(13, 15)]: true,
-      [utils.asGridCoord(13, 14)]: true,
+      [utils.asGridCoord(13, 14)]: true, */
     },
   },
   Dungeon: {
@@ -209,13 +212,13 @@ window.OverworldMaps = {
       hero: new Person({
         isPlayerControlled: true,
         x: utils.withGrid(15),
-        y: utils.withGrid(8.5),
+        y: utils.withGrid(8), //*8.5
       }),
       /**       
         *TODO: Add monsters for battle in the dungeon 
         master: new Person({
-        x: utils.withGrid(23.5),
-        y: utils.withGrid(18.8),
+        x: utils.withGrid(23),
+        y: utils.withGrid(18),
         src: "Images/characters/Master/SpriteSheet.png",
       }), */
     },
